@@ -12,6 +12,7 @@
 		E990729B1EB63E720011B0DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99072991EB63E720011B0DD /* Main.storyboard */; };
 		E990729D1EB63E720011B0DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E990729C1EB63E720011B0DD /* Assets.xcassets */; };
 		E99072A01EB63E720011B0DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E990729E1EB63E720011B0DD /* LaunchScreen.storyboard */; };
+		E99072A81EB640C40011B0DD /* MovieResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99072A71EB640C40011B0DD /* MovieResultCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E990729C1EB63E720011B0DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E990729F1EB63E720011B0DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E99072A11EB63E720011B0DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E99072A71EB640C40011B0DD /* MovieResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieResultCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				E99072951EB63E720011B0DD /* AppDelegate.swift */,
 				E99072971EB63E720011B0DD /* ViewController.swift */,
 				E99072991EB63E720011B0DD /* Main.storyboard */,
+				E99072A71EB640C40011B0DD /* MovieResultCell.swift */,
 				E990729C1EB63E720011B0DD /* Assets.xcassets */,
 				E990729E1EB63E720011B0DD /* LaunchScreen.storyboard */,
 				E99072A11EB63E720011B0DD /* Info.plist */,
@@ -139,6 +142,7 @@
 			files = (
 				E99072981EB63E720011B0DD /* ViewController.swift in Sources */,
 				E99072961EB63E720011B0DD /* AppDelegate.swift in Sources */,
+				E99072A81EB640C40011B0DD /* MovieResultCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
