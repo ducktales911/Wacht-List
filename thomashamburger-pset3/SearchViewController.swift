@@ -8,18 +8,64 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
-
+class TableViewController: UITableViewController, UISearchBarDelegate {
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchResults: [Dictionary<String, AnyObject>] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let keyWords = searchBar.text
+        let finalKeywords = keyWords?.replacingOccurrences(of: " ", with: "+")
+        getData(searchTerms: finalKeywords!)
+        self.view.endEditing(true)
+    }
+
+    
+    func getData(searchTerms: String) {
+        let urlString = "https://www.omdbapi.com/?s=" + searchTerms
+        let request = URLRequest(url: URL(string: urlString)!)
+        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+            
+            // Guards execute when the condition is NOT met.
+            guard let data = data, error == nil else {
+                self.searchResults = []
+                return
+            }
+            // Get access to the main thread and the interface elements:
+            DispatchQueue.main.async {
+                do {
+                    // Convert data to json.
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
+                    
+                    // Check if the response is true.
+                    if json["Error"] != nil {
+                        self.searchResults = []
+                    }
+                    else {
+                        // The list with results.
+                        self.searchResults = json["Search"]! as! [Dictionary<String, AnyObject>]
+                    }
+                } catch {
+                    self.searchResults = []
+                }
+                // reload table vieuw data
+                self.tableView.reloadData()
+                print(self.searchResults)
+            }
+        }).resume()
+    }
+
+    // Parse Data
+    
     
 
     /*
