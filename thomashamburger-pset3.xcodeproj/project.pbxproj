@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E962C0C01EB67966009F8A7C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962C0BF1EB67966009F8A7C /* SearchViewController.swift */; };
+		E95448351EB7E1FD00189845 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95448341EB7E1FD00189845 /* SearchViewController.swift */; };
 		E962C0C21EB67A80009F8A7C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962C0C11EB67A80009F8A7C /* DetailsViewController.swift */; };
 		E99072961EB63E720011B0DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99072951EB63E720011B0DD /* AppDelegate.swift */; };
 		E99072981EB63E720011B0DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99072971EB63E720011B0DD /* ViewController.swift */; };
@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E962C0BF1EB67966009F8A7C /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E95448341EB7E1FD00189845 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E962C0C11EB67A80009F8A7C /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		E99072921EB63E720011B0DD /* thomashamburger-pset3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "thomashamburger-pset3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99072951EB63E720011B0DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				E99072951EB63E720011B0DD /* AppDelegate.swift */,
-				E962C0BF1EB67966009F8A7C /* SearchViewController.swift */,
+				E95448341EB7E1FD00189845 /* SearchViewController.swift */,
 				E99072971EB63E720011B0DD /* ViewController.swift */,
 				E99072991EB63E720011B0DD /* Main.storyboard */,
 				E99072A71EB640C40011B0DD /* MovieResultCell.swift */,
@@ -146,9 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E95448351EB7E1FD00189845 /* SearchViewController.swift in Sources */,
 				E99072981EB63E720011B0DD /* ViewController.swift in Sources */,
 				E99072961EB63E720011B0DD /* AppDelegate.swift in Sources */,
-				E962C0C01EB67966009F8A7C /* SearchViewController.swift in Sources */,
 				E99072A81EB640C40011B0DD /* MovieResultCell.swift in Sources */,
 				E962C0C21EB67A80009F8A7C /* DetailsViewController.swift in Sources */,
 			);

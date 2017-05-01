@@ -2,24 +2,34 @@
 //  SearchViewController.swift
 //  thomashamburger-pset3
 //
-//  Created by Thomas Hamburger on 30-04-17.
+//  Created by Thomas Hamburger on 01-05-17.
 //  Copyright © 2017 Thomas Hamburger. All rights reserved.
 //
 
 import UIKit
 
-class TableViewController: UITableViewController, UISearchBarDelegate {
-    
+class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var searchResults: [Dictionary<String, AnyObject>] = []
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieResultCell
+        return cell
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -28,7 +38,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         getData(searchTerms: finalKeywords!)
         self.view.endEditing(true)
     }
-
+    
     
     func getData(searchTerms: String) {
         let urlString = "https://www.omdbapi.com/?s=" + searchTerms
@@ -38,6 +48,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             // Guards execute when the condition is NOT met.
             guard let data = data, error == nil else {
                 self.searchResults = []
+                // Error handling
                 return
             }
             // Get access to the main thread and the interface elements:
@@ -58,24 +69,12 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                     self.searchResults = []
                 }
                 // reload table vieuw data
-                self.tableView.reloadData()
+                // self.tableView.reloadData()
                 print(self.searchResults)
             }
         }).resume()
     }
-
+    
     // Parse Data
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
