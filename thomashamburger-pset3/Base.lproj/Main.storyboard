@@ -67,7 +67,7 @@
                                             <outlet property="movieDescription" destination="bSZ-5z-fGW" id="wIx-1d-XmY"/>
                                             <outlet property="movieImage" destination="zej-k3-oFT" id="5VB-8q-had"/>
                                             <outlet property="movieName" destination="T0A-Ni-edl" id="PFM-Ou-VvZ"/>
-                                            <segue destination="op4-LU-wDu" kind="show" id="fpd-XR-pjY"/>
+                                            <segue destination="op4-LU-wDu" kind="show" identifier="watchListSegue" id="fpd-XR-pjY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -116,8 +116,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="F2K-mW-Y5v">
                                         <rect key="frame" x="197" y="50" width="63.5" height="134.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V82-AW-kd5">
-                                                <rect key="frame" x="0.0" y="0.0" width="34" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V82-AW-kd5">
+                                                <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -162,10 +162,22 @@
                                 <rect key="frame" x="23" y="617" width="336" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to Watchlist"/>
+                                <connections>
+                                    <action selector="addButton:" destination="op4-LU-wDu" eventType="touchUpInside" id="a3v-Ig-Urr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="actorsLabel" destination="5ud-PM-WWv" id="Ts5-VH-b4B"/>
+                        <outlet property="descriptionText" destination="nFC-Rd-cFg" id="V3j-c7-VyB"/>
+                        <outlet property="directorLabel" destination="wVu-a5-O0z" id="pu8-yC-Z9s"/>
+                        <outlet property="moviePoster" destination="19p-DE-Vro" id="csL-Ac-GbS"/>
+                        <outlet property="ratingLabel" destination="lUk-8t-ODC" id="Ul2-hk-0c4"/>
+                        <outlet property="runtimeLabel" destination="pwJ-L6-cC0" id="cU9-bg-OLa"/>
+                        <outlet property="titleLabel" destination="V82-AW-kd5" id="639-Ar-A7R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b70-2Z-cpH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -226,9 +238,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CfG-Ay-ilh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="815"/>
+            <point key="canvasLocation" x="1705" y="835"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="QzG-XS-uX9">
             <objects>
                 <viewController id="aqO-u2-N0r" customClass="SearchViewController" customModule="thomashamburger_pset3" customModuleProvider="target" sceneMemberID="viewController">
@@ -284,6 +296,7 @@
                                             <outlet property="movieDescription" destination="AiV-I8-Znn" id="Ufj-sx-RCY"/>
                                             <outlet property="movieImage" destination="nUg-nX-3bp" id="zVY-7G-qwz"/>
                                             <outlet property="movieName" destination="nPZ-OT-24E" id="scr-el-TJ9"/>
+                                            <segue destination="op4-LU-wDu" kind="show" identifier="searchSegue" id="fev-4Y-Bg1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -296,6 +309,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -306,15 +323,18 @@
                             <constraint firstItem="t8y-1t-uek" firstAttribute="leading" secondItem="wv0-8A-HHt" secondAttribute="leading" id="dd0-7d-RCA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="joG-70-xMV"/>
+                    <navigationItem key="navigationItem" title="Search" id="joG-70-xMV"/>
                     <connections>
-                        <outlet property="searchBar" destination="mIX-5E-kqO" id="9O9-TP-cbS"/>
+                        <outlet property="searchBar" destination="mIX-5E-kqO" id="NNQ-c2-D3n"/>
                         <outlet property="tableView" destination="t8y-1t-uek" id="cQ4-KT-DUm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SzN-Oy-bxM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="815"/>
+            <point key="canvasLocation" x="2561" y="836"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fev-4Y-Bg1"/>
+    </inferredMetricsTieBreakers>
 </document>

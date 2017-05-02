@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    
     let titles = ["Psycho", "Zoolander", "Terminator", "Alien"]
     
     let descritions = [
@@ -35,9 +36,12 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieResultCell
-        cell.movieName.text = titles[indexPath.row]
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieResultCell
+        
+        //if let movieForRow = movieList[indexPath.row].title {
+        //    cell.movieName.text = movieForRow
+        //}
         if let description = descritions[titles[indexPath.row]] {
             cell.movieDescription.text = description
         } else {

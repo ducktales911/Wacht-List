@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E95448351EB7E1FD00189845 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95448341EB7E1FD00189845 /* SearchViewController.swift */; };
 		E962C0C21EB67A80009F8A7C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962C0C11EB67A80009F8A7C /* DetailsViewController.swift */; };
+		E9703FD11EB8983100A7AE2A /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9703FD01EB8983100A7AE2A /* Movie.swift */; };
 		E99072961EB63E720011B0DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99072951EB63E720011B0DD /* AppDelegate.swift */; };
 		E99072981EB63E720011B0DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99072971EB63E720011B0DD /* ViewController.swift */; };
 		E990729B1EB63E720011B0DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99072991EB63E720011B0DD /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		E95448341EB7E1FD00189845 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E962C0C11EB67A80009F8A7C /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		E9703FD01EB8983100A7AE2A /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E99072921EB63E720011B0DD /* thomashamburger-pset3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "thomashamburger-pset3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99072951EB63E720011B0DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E99072971EB63E720011B0DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				E99072951EB63E720011B0DD /* AppDelegate.swift */,
 				E95448341EB7E1FD00189845 /* SearchViewController.swift */,
+				E9703FD01EB8983100A7AE2A /* Movie.swift */,
 				E99072971EB63E720011B0DD /* ViewController.swift */,
 				E99072991EB63E720011B0DD /* Main.storyboard */,
 				E99072A71EB640C40011B0DD /* MovieResultCell.swift */,
@@ -148,6 +151,7 @@
 			files = (
 				E95448351EB7E1FD00189845 /* SearchViewController.swift in Sources */,
 				E99072981EB63E720011B0DD /* ViewController.swift in Sources */,
+				E9703FD11EB8983100A7AE2A /* Movie.swift in Sources */,
 				E99072961EB63E720011B0DD /* AppDelegate.swift in Sources */,
 				E99072A81EB640C40011B0DD /* MovieResultCell.swift in Sources */,
 				E962C0C21EB67A80009F8A7C /* DetailsViewController.swift in Sources */,

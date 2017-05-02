@@ -8,15 +8,17 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var tableView: UITableView!
+    var movie = Movie.init()
     
     var searchResults: [Dictionary<String, AnyObject>] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,21 +26,42 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieResultCell
+        cell.movieName.text = self.searchResults[indexPath.row]["Title"] as? String
+        if let year = self.searchResults[indexPath.row]["Year"] {
+            cell.movieDescription.text = year as? String
+        } else {
+            cell.movieDescription.text = ""
+        }
+        
         return cell
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let keyWords = searchBar.text
-        let finalKeywords = keyWords?.replacingOccurrences(of: " ", with: "+")
-        getData(searchTerms: finalKeywords!)
-        self.view.endEditing(true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        movie.title = self.searchResults[indexPath.row]["Title"] as! String
+        movie.rating = self.searchResults[indexPath.row]["imdbID"] as! String
+        movie.description = self.searchResults[indexPath.row]["Title"] as! String
+        movie.year = self.searchResults[indexPath.row]["Year"] as! String
+        movie.image = self.searchResults[indexPath.row]["Poster"] as! String
+        print(movie.title + "CLICKED!!")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchSegue" {
+            let nextVC = segue.destination as! DetailsViewController
+            nextVC.movie = movie
+            
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange keyWords: String) {
+        let finalKeywords = keyWords.replacingOccurrences(of: " ", with: "+")
+        getData(searchTerms: finalKeywords)
+    }
     
     func getData(searchTerms: String) {
         let urlString = "https://www.omdbapi.com/?s=" + searchTerms
@@ -56,25 +79,18 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 do {
                     // Convert data to json.
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
-                    
-                    // Check if the response is true.
                     if json["Error"] != nil {
                         self.searchResults = []
                     }
                     else {
-                        // The list with results.
                         self.searchResults = json["Search"]! as! [Dictionary<String, AnyObject>]
                     }
                 } catch {
                     self.searchResults = []
                 }
                 // reload table vieuw data
-                // self.tableView.reloadData()
-                print(self.searchResults)
+                self.tableView.reloadData()
             }
         }).resume()
     }
-    
-    // Parse Data
-    
 }
