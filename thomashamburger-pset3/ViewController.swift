@@ -11,46 +11,39 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    let titles = ["Psycho", "Zoolander", "Terminator", "Alien"]
-    
-    let descritions = [
-        "Psycho": "Horror",
-        "Zoolander": "Comedy",
-        "Terminator": "Action",
-        "Alien": "Science Fiction"
-    ]
+    var watchList = UserDefaults.standard.array(forKey: "movies") as? [[String : String]] ?? []
+   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count
+        return watchList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieResultCell
-        
-        //if let movieForRow = movieList[indexPath.row].title {
-        //    cell.movieName.text = movieForRow
-        //}
-        if let description = descritions[titles[indexPath.row]] {
-            cell.movieDescription.text = description
+        cell.movieName.text = self.watchList[indexPath.row]["Title"] as? String
+        if let year = self.watchList[indexPath.row]["Year"] {
+            cell.movieDescription.text = year as? String
         } else {
             cell.movieDescription.text = ""
         }
-        
-        if let image = UIImage(named: titles[indexPath.row]) {
-            cell.movieImage.image = image
-        }
+
+//        if let image = UIImage(named: titles[indexPath.row]) {
+//            cell.movieImage.image = image
+//        }
         
         return cell
     }

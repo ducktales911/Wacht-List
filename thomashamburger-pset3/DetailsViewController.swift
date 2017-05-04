@@ -18,13 +18,11 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var moviePoster: UIImageView!
     
-    var movie = Movie.init()
+    var movie: Dictionary<String, String>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(movie.year + "YEAR IN SECONDVC!!!")
-        titleLabel.text = movie.title
-        ratingLabel.text = movie.rating
+        titleLabel.text = self.movie?["Title"]
         // Do any additional setup after loading the view.
     }
 
@@ -34,8 +32,18 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func addButton(_ sender: Any) {
-        // geef object door
+        var existing = UserDefaults.standard.array(forKey: "movies") as? [[String : String]] ?? []
+        existing.append(self.movie!)
+        UserDefaults.standard.set(existing, forKey: "movies")
     }
+    
+    // Geef object door aan Detail View
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "addToWatchList" {
+//            let nextVC = segue.destination as! ViewController
+//            nextVC.titles.append(movie.title)
+//        }
+//    }
 
     /*
     // MARK: - Navigation

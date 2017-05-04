@@ -10,12 +10,11 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var movie = Movie.init()
     
-    var searchResults: [Dictionary<String, AnyObject>] = []
+    // Dictionary van arrays om the zoekresultaten in op te slaan
+    var searchResults: [Dictionary<String, String>] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -37,32 +36,31 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             cell.movieDescription.text = ""
         }
-        
         return cell
     }
     
+    var movie: Dictionary<String, String>?
+    
+    // Vul data in in het Movie object
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        movie.title = self.searchResults[indexPath.row]["Title"] as! String
-        movie.rating = self.searchResults[indexPath.row]["imdbID"] as! String
-        movie.description = self.searchResults[indexPath.row]["Title"] as! String
-        movie.year = self.searchResults[indexPath.row]["Year"] as! String
-        movie.image = self.searchResults[indexPath.row]["Poster"] as! String
-        print(movie.title + "CLICKED!!")
+        movie = self.searchResults[indexPath.row]
     }
     
+    // Geef object door aan Detail View
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchSegue" {
             let nextVC = segue.destination as! DetailsViewController
             nextVC.movie = movie
-            
         }
     }
     
+    // Haal de keywords uit het zoekveld maak het een goede parameter
     func searchBar(_ searchBar: UISearchBar, textDidChange keyWords: String) {
         let finalKeywords = keyWords.replacingOccurrences(of: " ", with: "+")
         getData(searchTerms: finalKeywords)
     }
     
+    // Doet de JSON request en vult de resultaten in de table view in
     func getData(searchTerms: String) {
         let urlString = "https://www.omdbapi.com/?s=" + searchTerms
         let request = URLRequest(url: URL(string: urlString)!)
@@ -83,7 +81,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                         self.searchResults = []
                     }
                     else {
-                        self.searchResults = json["Search"]! as! [Dictionary<String, AnyObject>]
+                        self.searchResults = json["Search"]! as! [Dictionary<String, String>]
                     }
                 } catch {
                     self.searchResults = []
